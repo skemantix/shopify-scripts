@@ -110,8 +110,8 @@ class TierPartitioner
     # Filter items
     items = cart.line_items.select { |item| @selector.match?(item) }
 
-    # Group items using the appropriate key.
-    cart.line_items.group_by { |item| group_key(item) }
+    # Group filtered items using the appropriate key.
+    items.group_by { |item| group_key(item) }
   end
 
   private
